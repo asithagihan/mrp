@@ -21,9 +21,6 @@ export class ProductionPlan {
 
   @Column()
   public user: string;
-
-  @Column()
-  public production_order_template_ids: Array<number>;
 }
 
 export default ProductionPlan;

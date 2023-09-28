@@ -22,7 +22,7 @@ const app = express();
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
-app.use("/api/menu/items", itemsRouter);
+app.use("/api/v1/items", itemsRouter);
 
 app.use(errorHandler);
 app.use(notFoundHandler);

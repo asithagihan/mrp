@@ -1,26 +1,11 @@
-import { Column, Entity, Unique, PrimaryGeneratedColumn } from "typeorm";
-
-export enum Unit {
-  ML = "ml",
-  PCS = "pcs",
-  GRAMS = "g",
-}
-
-export enum ItemType {
-  FINISHED_PRODUCT = "FINISHED_PRODUCT",
-  PACKAGING = "PACKAGING",
-  MATERIAL = "MATERIAL",
-  MAIN_BATCH = "MAIN_BATCH",
-  INPROGRESS_PRODUCT = "INPROGRESS_PRODUCT",
-  CONSUMABLE = "CONSUMABLE",
-}
+import { Column, Entity, Unique } from "typeorm";
+import { Base } from "./base";
+import { Unit } from "./../items/item.interface";
+import { ItemType } from "./../items/item.interface";
 
 @Unique("item_sku_constraint", ["sku"])
 @Entity()
-export class Item {
-  @PrimaryGeneratedColumn()
-  public id: number;
-
+export class Item extends Base {
   @Column({ unique: true })
   public sku: string;
 
@@ -52,6 +37,9 @@ export class Item {
 
   @Column()
   public image: string;
+
+  @Column()
+  public description: string;
 }
 
 export default Item;
