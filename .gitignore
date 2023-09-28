@@ -3,3 +3,5 @@ app/node_modules/
 cdk/cdk.out/
 cdk/node_modules/
 old/
+api/dist/
+api/node_modules/

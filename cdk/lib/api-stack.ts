@@ -19,7 +19,6 @@ export class ApiStack extends Stack {
       deployOptions: {
         stageName: "dev",
       },
-      // 👇 enable CORS
       defaultCorsPreflightOptions: {
         allowHeaders: [
           "Content-Type",
@@ -35,17 +34,24 @@ export class ApiStack extends Stack {
 
     new CfnOutput(this, "apiUrl", { value: api.url });
 
-    const expressApp = new FunctionResource(this, `ApiLambdaFunction`, {
+    const nestApp = new FunctionResource(this, `ApiLambdaFunction`, {
       stage: STAGE,
-      handler: "lambda.handler",
+      handler: "main.handler",
       code: Code.fromAsset("./../api/dist/", {}),
     });
+
+    const defaultPath = api.root.addResource("/");
+
+    defaultPath.addMethod(
+      "ANY",
+      new LambdaIntegration(nestApp.function, { proxy: true })
+    );
 
     const anyPath = api.root.addResource("{proxy+}");
 
     anyPath.addMethod(
       "ANY",
-      new LambdaIntegration(expressApp.function, { proxy: true })
+      new LambdaIntegration(nestApp.function, { proxy: true })
     );
 
     // Prints out the stack region to the terminal
