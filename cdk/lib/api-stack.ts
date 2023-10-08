@@ -38,6 +38,13 @@ export class ApiStack extends Stack {
       stage: STAGE,
       handler: "main.handler",
       code: Code.fromAsset("./../api/dist/", {}),
+      environment: {
+        PORT: "7000",
+        DB_NAME: "platform",
+        DB_USER: "",
+        DB_HOST: "",
+        DB_PASSWORD: "",
+      },
     });
 
     const defaultPath = api.root.addResource("/");

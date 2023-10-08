@@ -6,6 +6,11 @@ export interface FunctionResourceProps {
   readonly stage: string;
   readonly handler: string;
   readonly code: Code;
+  readonly environment:
+    | {
+        [key: string]: string;
+      }
+    | undefined;
 }
 
 export class FunctionResource extends Construct {
@@ -18,6 +23,7 @@ export class FunctionResource extends Construct {
       handler: props.handler,
       code: props.code,
       memorySize: 1024,
+      environment: props.environment,
     });
   }
 }
