@@ -5,3 +5,4 @@ cdk/node_modules/
 old/
 api/dist/
 api/node_modules/
+api/.venv/

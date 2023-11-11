@@ -1,19 +1,22 @@
 {
-	"cSpell.words": [
-		"buttons",
-		"dropdown",
-		"for",
-		"i",
-		"item",
-		"jump",
-		"let",
-		"numbers",
-		"page",
-		"pages",
-		"props",
-		"push",
-		"render",
-		"return",
-		"this"
-	]
+  "python.analysis.extraPaths": ["./api/.venv/lib/python3.11/"],
+  "cSpell.words": [
+    "buttons",
+    "dropdown",
+    "for",
+    "i",
+    "item",
+    "jump",
+    "let",
+    "numbers",
+    "page",
+    "pages",
+    "props",
+    "push",
+    "render",
+    "return",
+    "this"
+  ],
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.typeCheckingMode": "basic"
 }
